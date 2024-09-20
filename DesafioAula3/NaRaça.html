@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de aluno</h1>
+    <form action="process_form.php" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+        <br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Ex.:abc@gmail.com">
+        <button onclick="addGmail()">@gmail.com</button>
+        <script>
+            function addGmail() {
+              var emailInput = document.getElementById("email");
+              var currentValue = emailInput.value;
+              emailInput.value = currentValue + "@gmail.com";
+            }
+        </script>
+        <br><br>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required placeholder="Digite sua idade" min="10" max="90">
+        <br><br>
+
+        <label for="turma">Turma:</label>
+        <input type="text" id="turma" name="turma" required placeholder="Ex.: 1ano-b, 2ano-a">
+        <br><br>
+
+        <input type="submit" value="Cadastrar">
+        <input type="reset" value="Limpar">
+    </form>
+    
+    
+    <h1>Tabela de alunos cadastrados</h1>
+    
+    <style>
+        table,th,td{
+            border: 1px solid purple ;
+        }
+    </style>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Idade</th>
+            <th>Turma</th>
+        </tr>
+        <tr>
+            <td>000001</td>
+            <td>Gustavo</td>
+            <td>gustavo@gmail.com</td>
+            <td>18</td>
+            <td>3ano-a</td>
+        </tr>
+        <tr>
+            <td>000010</td>
+            <td>André</td>
+            <td>andre@gmail.com</td>
+            <td>20</td>
+            <td>2ano-d</td>
+        </tr>
+        <tr>
+            <td>000011</td>
+            <td>Nicole</td>
+            <td>nicole@gmail.com</td>
+            <td>20</td>
+            <td>3ano-a</td>
+        </tr>
+        <tr>
+            <td>000100</td>
+            <td>Éverton</td>
+            <td>everton@gmail.com</td>
+            <td>23</td>
+            <td>1ano-c</td>
+        </tr>
+        <tr>
+            <td>000101</td>
+            <td>Maria</td>
+            <td>maria@gmail.com</td>
+            <td>19</td>
+            <td>1ano-b</td>
+        </tr>                            
+      </table>
+      
+</body>
+</html>
