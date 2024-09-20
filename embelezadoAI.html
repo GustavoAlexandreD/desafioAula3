@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aluno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4a4a4a;
+            text-align: center;
+        }
+        .form-container, .table-container {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #5c67f2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4a54d2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #5c67f2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Cadastro de Aluno</h1>
+        <form id="cadastroForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Ex.: abc@gmail.com">
+            <button type="button" onclick="addGmail()">Adicionar @gmail.com</button>
+            
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required placeholder="Digite sua idade" min="10" max="90">
+            
+            <label for="turma">Turma:</label>
+            <input type="text" id="turma" name="turma" required placeholder="Ex.: 1ano-b, 2ano-a">
+            
+            <input type="submit" value="Cadastrar">
+            <input type="reset" value="Limpar">
+        </form>
+    </div>
+
+    <div class="table-container">
+        <h1>Tabela de Alunos Cadastrados</h1>
+        <table id="tabelaAlunos">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Idade</th>
+                <th>Turma</th>
+            </tr>
+            <!-- As linhas de alunos cadastrados serão adicionadas aqui -->
+        </table>
+    </div>
+
+    <script>
+        let idCounter = 1;
+
+        function addGmail() {
+            var emailInput = document.getElementById("email");
+            emailInput.value += "@gmail.com";
+        }
+
+        document.getElementById("cadastroForm").onsubmit = function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const idade = document.getElementById("idade").value;
+            const turma = document.getElementById("turma").value;
+
+            const tabela = document.getElementById("tabelaAlunos");
+            const novaLinha = tabela.insertRow();
+
+            novaLinha.insertCell(0).textContent = String(idCounter).padStart(6, '0');
+            novaLinha.insertCell(1).textContent = nome;
+            novaLinha.insertCell(2).textContent = email;
+            novaLinha.insertCell(3).textContent = idade;
+            novaLinha.insertCell(4).textContent = turma;
+
+            idCounter++;
+            document.getElementById("cadastroForm").reset();
+        };
+    </script>
+</body>
+</html>
